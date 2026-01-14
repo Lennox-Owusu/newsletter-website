@@ -1,0 +1,125 @@
+/* Styles for Newsletter sign-up form challenge */
+:root{
+  --tomato: hsl(4,100%,67%);
+  --dark-slate: hsl(233,24%,19%); /* darker canvas to match preview */
+  --charcoal: hsl(235,18%,26%);
+  --grey: hsl(231,7%,60%);
+  --white: hsl(0,0%,100%);
+  --max-width: 900px; /* overall container width */
+  --card-max-width: 720px; /* reduced card width to fit smaller screens */
+  --card-radius: 22px;
+  --btn-radius: 12px;
+  --btn-bg: hsl(233, 25%, 16%);
+  --card-shadow: 0 30px 60px rgba(8,12,28,0.45);
+  --input-height: 52px;
+}  
+*{box-sizing:border-box}
+html{font-size:16px}
+html,body{height:100%;}
+body{
+  font-family: 'Roboto', system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
+  color:var(--charcoal);
+  margin:0;
+  background: var(--dark-slate);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  padding:48px 32px; /* reduced outer padding */
+} 
+.container{width:100%;max-width:var(--max-width);}
+.card{
+  background:var(--white);
+  border-radius:var(--card-radius);
+  display:flex;
+  flex-direction:column;
+  overflow:hidden;
+  box-shadow:var(--card-shadow);
+  max-width:var(--card-max-width);
+  margin:32px auto; /* tighter vertical spacing */
+} 
+.illustration{overflow:hidden;border-radius:0 var(--card-radius) var(--card-radius) 0}
+.illustration img{width:100%;display:block;height:100%;object-fit:cover;border-radius:0 var(--card-radius) var(--card-radius) 0} 
+.content{padding:48px 48px 48px 56px;} /* reduced content padding */
+h1{margin:0 0 16px;font-size:40px;color:var(--dark-slate);line-height:1.04;font-weight:700;letter-spacing:-0.02em} 
+.lead{margin:0 0 14px;color:var(--grey);font-size:14px;max-width:380px}
+.features{list-style:none;padding:0;margin:0 0 20px;display:grid;gap:12px}
+.features li{display:flex;align-items:flex-start;gap:12px;color:var(--charcoal);font-size:14px;line-height:1.4}
+.features img{width:18px;height:18px;margin-top:6px} 
+form{display:flex;flex-direction:column;gap:12px}
+.label{display:block;font-size:12px;color:var(--grey);font-weight:700;margin-bottom:8px;letter-spacing:0.02em} 
+input[type='email']{
+  height:var(--input-height);padding:0 18px;border-radius:8px;border:1px solid hsl(231,7%,94%);font-size:15px;color:#6f7280;outline:none;transition:box-shadow 180ms ease, border-color 180ms ease;background:#fff
+}
+input[type='email']::placeholder{color:#cfcfd2}
+input[type='email']:focus{box-shadow:0 10px 30px rgba(36,42,70,0.12);border-color:var(--charcoal)}
+.error{color:var(--tomato);font-size:13px;min-height:18px}
+.btn{display:inline-flex;align-items:center;justify-content:center;height:52px;width:100%;max-width:360px;padding:0 22px;background:var(--btn-bg);color:var(--white);border:none;border-radius:var(--btn-radius);font-weight:700;cursor:pointer;transition:transform 120ms ease, filter 120ms ease;font-size:15px}
+.btn:hover{transform:translateY(-2px);filter:brightness(0.98)}
+.btn:focus{outline:3px solid rgba(4,125,255,0.12);outline-offset:2px}
+.btn.secondary{background:transparent;color:var(--dark-slate);border:1px solid hsl(231,7%,90%)} 
+.hidden{display:none}
+
+/* Success screen (centered, separate screen) */
+.success-screen{position:fixed;inset:0;display:flex;align-items:center;justify-content:center;z-index:60}
+/* ensure the hidden utility hides the success screen even if .success-screen sets display */
+.success-screen.hidden{display:none}
+.success-card{background:var(--white);border-radius:18px;padding:36px 40px;width:360px;box-shadow:0 30px 60px rgba(8,12,28,0.45);text-align:left}
+.success-icon{width:48px;height:48px;border-radius:50%;display:flex;align-items:center;justify-content:center;background:linear-gradient(180deg,#ff8a66,#ff6b6b);box-shadow:0 6px 18px rgba(255,110,80,0.12);margin-bottom:18px}
+.success-icon img{width:22px;height:22px}
+.success-card h2{margin:0 0 10px;font-size:28px;color:var(--dark-slate);line-height:1.04}
+.success-copy{margin:0 0 20px;color:var(--grey);font-size:14px}
+.success-card .btn{width:100%;background:var(--btn-bg);border-radius:12px;height:48px}
+.success-card .btn:hover{transform:translateY(-1px)}
+.success-card.animate{animation:slideUpFade 420ms cubic-bezier(.2,.9,.2,1) both}
+
+/* Animation for success reveal */
+@keyframes slideUpFade{
+  from{opacity:0;transform:translateY(12px)}
+  to{opacity:1;transform:translateY(0)}
+}
+.visually-hidden{position:absolute!important;height:1px;width:1px;overflow:hidden;clip:rect(1px,1px,1px,1px);white-space:nowrap}
+/* Desktop layout (desktop-first focus) */
+@media (min-width:1024px){
+  :root{ --max-width:1000px; } /* wider container for desktop */
+  .card{
+    flex-direction:row;
+    align-items:stretch;
+    gap:0;
+  }
+  .illustration{
+    flex:0 0 48%;
+    max-width:520px;
+    display:block;
+  }
+  .illustration img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    display:block;
+  }
+  .content{
+    flex:1 1 52%;
+    padding:72px 64px;
+  }
+  h1{font-size:40px}
+  .lead{font-size:14px}
+  .features li{font-size:14px;gap:12px}
+  form{display:flex;flex-direction:column;align-items:flex-start;gap:12px}
+  .label{margin-left:0}
+  input[type='email']{width:100%;max-width:320px;height:56px;padding:0 20px;border-radius:8px}
+  .error{order:3;width:100%;margin-top:10px;max-width:320px}
+  .btn{width:100%;max-width:320px;padding:15px 22px;border-radius:12px} 
+  .btn:hover{transform:translateY(-2px);filter:brightness(0.98)}
+  .success{flex-direction:row;align-items:center;gap:22px}
+  .success img{width:72px;height:72px}
+  #success-email{color:var(--tomato)}
+}
+
+/* Small tweak for invalid input */
+.input-invalid{border-color:var(--tomato);box-shadow:0 0 0 4px rgba(255,70,70,0.06)}
+
+/* Focus visible for keyboard users */
+:focus-visible{outline:auto}
+
+/* Improved focus for interactive elements */
+a:focus-visible, button:focus-visible, input:focus-visible{outline:3px solid rgba(4,125,255,0.12);outline-offset:3px;border-radius:6px}
