@@ -61,7 +61,6 @@ input[type='email']:focus{box-shadow:0 10px 30px rgba(36,42,70,0.12);border-colo
 
 /* Success screen (centered, separate screen) */
 .success-screen{position:fixed;inset:0;display:flex;align-items:center;justify-content:center;z-index:60}
-/* ensure the hidden utility hides the success screen even if .success-screen sets display */
 .success-screen.hidden{display:none}
 .success-card{background:var(--white);border-radius:18px;padding:36px 40px;width:360px;box-shadow:0 30px 60px rgba(8,12,28,0.45);text-align:left}
 .success-icon{width:48px;height:48px;border-radius:50%;display:flex;align-items:center;justify-content:center;background:linear-gradient(180deg,#ff8a66,#ff6b6b);box-shadow:0 6px 18px rgba(255,110,80,0.12);margin-bottom:18px}
@@ -113,6 +112,127 @@ input[type='email']:focus{box-shadow:0 10px 30px rgba(36,42,70,0.12);border-colo
   .success{flex-direction:row;align-items:center;gap:22px}
   .success img{width:72px;height:72px}
   #success-email{color:var(--tomato)}
+}
+
+/* Tablet layout */
+@media (min-width:768px) and (max-width:1023px){
+  :root{ --max-width:800px; }
+  .card{
+    flex-direction:row;
+    align-items:stretch;
+  }
+  .illustration{
+    flex:0 0 40%;
+    display:block;
+  }
+  .illustration img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+  }
+  .content{
+    flex:1 1 60%;
+    padding:48px 40px;
+  }
+  h1{font-size:36px;margin-bottom:16px}
+  .lead{font-size:14px;margin-bottom:16px}
+  .features li{font-size:14px}
+  input[type='email']{
+    width:100%;
+    height:52px;
+    padding:0 18px;
+  }
+  .btn{
+    width:100%;
+    max-width:100%;
+    height:52px;
+  }
+  .success-card{width:100%;max-width:380px}
+}
+
+/* Mobile layout  */
+@media (max-width:767px){
+  :root{ --max-width:100%; --card-max-width:100%; }
+  body{
+    padding:24px 16px;
+  }
+  .card{
+    flex-direction:column;
+    margin:16px auto;
+  }
+  .illustration{
+    width:100%;
+    height:200px;
+    border-radius:var(--card-radius) var(--card-radius) 0 0;
+  }
+  .illustration img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    border-radius:var(--card-radius) var(--card-radius) 0 0;
+  }
+  .content{
+    padding:32px 24px;
+    text-align:center;
+  }
+  h1{
+    font-size:28px;
+    margin-bottom:12px;
+  }
+  .lead{
+    font-size:13px;
+    margin-bottom:16px;
+    max-width:100%;
+  }
+  .features{margin-bottom:20px;text-align:left}
+  .features li{
+    font-size:13px;
+    gap:10px;
+    justify-content:flex-start;
+  }
+  .features img{width:16px;height:16px;margin-top:2px}
+  form{align-items:stretch}
+  input[type='email']{
+    width:100%;
+    height:48px;
+    padding:0 16px;
+    font-size:14px;
+  }
+  input[type='email']::placeholder{font-size:13px}
+  .error{font-size:12px;margin-top:6px}
+  .btn{
+    width:100%;
+    max-width:100%;
+    height:48px;
+    font-size:14px;
+    padding:0 16px;
+  }
+  .success-screen{padding:16px}
+  .success-card{
+    width:100%;
+    max-width:360px;
+    padding:28px 24px;
+    border-radius:16px;
+  }
+  .success-icon{
+    width:40px;
+    height:40px;
+    margin:0 auto 16px;
+  }
+  .success-icon img{width:18px;height:18px}
+  .success-card h2{
+    font-size:24px;
+    text-align:center;
+    margin:0 0 8px;
+  }
+  .success-copy{
+    text-align:center;
+    font-size:13px;
+    margin:0 0 24px;
+  }
+  .success-card .btn{
+    margin:0 auto;
+  }
 }
 
 /* Small tweak for invalid input */
